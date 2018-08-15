@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+
+	<h1 style="aline-text:center;">Feel Your Emotion</h1>
+	<hr>
+	{% if messages|length == 1%}	
+			<h2 style="aline-text:center;">We got some songs for your {{messages[0]|capitalize}} mood</h2>
+			<hr>
+			<div class="row">
+				<div class="col-sm-6 col-lg-4" style="background:grey;">
+						<video controls="" autoplay="" name="media"><source src="{{url_for('static',filename='music/'+messages[0]+'/5.mp3')}}" type="audio/mp3"></video>
+					</div>
+				{% for count in range(5) %}
+					<div class="col-sm-6 col-lg-4" style="background:grey;">
+						<video controls=""  name="media"><source src="{{url_for('static',filename='music/'+messages[0]+'/'+count|string+'.mp3')}}" type="audio/mp3"></video>
+					</div>
+				{% endfor %}	
+			</div>
+	{% else %}
+			<h2 style="aline-text:center;">Some songs for you</h2>
+			<hr>
+			<div class="row">
+				<div class="col-sm-6 col-lg-4" style="background:grey;">
+					<video controls="" autoplay="" name="media"><source src="{{url_for('static',filename='music/general/1.mp3')}}" type="audio/mp3"></video>
+				</div>
+				{% for count in range(5) %}
+					<div class="col-sm-6 col-lg-4" style="background:grey;">
+						<video controls=""  name="media"><source src="{{url_for('static',filename='music/'+messages[0]+'/'+count|string+'.mp3')}}" type="audio/mp3"></video>
+					</div>
+				{% endfor %}
+			</div>			
+	{% endif %}	
+{% endblock %}

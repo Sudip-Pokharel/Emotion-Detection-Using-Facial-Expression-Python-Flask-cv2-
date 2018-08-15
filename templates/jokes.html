@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+
+	<h1 style="aline-text:center;">Feel Your Emotion</h1>
+	<hr>
+	{% if messages|length == 1%}	
+			<h2 style="aline-text:center;">We got some jokes And Quotes for your {{messages[0]|capitalize}} mood</h2>
+			<hr>
+			<div class="row">
+				{% for count in range(6) %}
+					<div class="col-sm-6">
+						<img src="{{url_for('static',filename='jokes/'+messages[0]+'/'+count|string+'.jpg')}}" alt="{{messages[0]}}" style="height:70%;width:70%;" class="img-thumbnail">
+					</div>
+				{% endfor %}	
+			</div>
+	{% else %}
+			<h2 style="aline-text:center;">Some songs for you</h2>
+			<hr>
+			<div class="row">
+				{% for count in range(5) %}
+						<div class="col-sm-6">
+						<img class="img-thumbnail" src="{{url_for('static',filename='jokes/general/'+count|string+'.jpg')}}" alt="All Emotions" style="height:70%;width:70%;">
+					</div>
+				{% endfor %}
+			</div>			
+	{% endif %}	
+{% endblock %}

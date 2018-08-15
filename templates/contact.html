@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+	{% block content %}
+	<h1 style="text-align: center;">Project Member</h1>
+	<div class="row">
+		<div class="col-sm-6 col-lg-4">
+			<img class="rounded-circle" src="{{url_for('static',filename='subiran.jpg')}}" alt="Subiran Photo" style="width: 70%; height: 70%">
+			<p>Name:-Subiran Shrestha</p>
+			<p>Address:-Ithari, Sunsari</p>	
+			<p>Email:subistha@gmail.com</p>
+		</div>
+
+		<div class="col-sm-6 col-lg-4">
+			<img class="rounded-circle" src="{{url_for('static',filename='sudip.jpg')}}" alt="Sudip Photo" style="width: 70%; height: 70%">
+			<p>Name:-Sudip Pokharel</p>
+			<p>Address:-Biratnagar, Morang</p>
+			<p>Email:sudieep661@gmail.com</p>
+		</div>
+
+		<div class="col-sm-6 col-lg-4">
+			<img class="rounded-circle" src="{{url_for('static',filename='suman.jpg')}}" alt="Suman Photo" style="width: 70%; height: 70%">
+			<p>Name:-Suman Dhakal</p>
+			<p>Address:-Urlabari, Morang</p>
+			<p>Email:dhakalsuman111@gmail.com</p>
+		</div>
+	</div>
+		<h1 style="text-align: center;">Supervised By</h1>
+		<div class="row" >		
+		<div class="col-sm-6 col-lg-4" style="margin: 0 auto;">
+			<img class="rounded-circle" width="304" height="236" src="{{url_for('static',filename='krishna sir.jpg')}}" alt="Krishna Sir" style="width: 100%; height: 70%">
+			<p>Krishna Subedi</p>
+			<p>Senior Section Officer</p>
+			<p>Computer Engineer, EPF</p>
+		</div>
+	</div>
+	{% endblock %}

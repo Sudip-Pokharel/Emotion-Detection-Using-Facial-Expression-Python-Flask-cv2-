@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+<style>
+	div#content {
+    display: none;
+    }
+ 
+div#loading {
+    top: 200 px;
+    margin: auto;
+    position: absolute;
+    z-index: 1000;
+    width: 160px;
+    height: 24px;
+    background: url(loadingimage.gif) no-repeat;
+    cursor: wait;
+    }
+	
+</style>
+<script type="text/javascript">// <![CDATA[
+        function preloader(){
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("content").style.display = "block";
+        }//preloader
+        window.onload = preloader;
+// ]]></script>
+	{% block content %}
+	<div id="loading">
+	<div class="container" id="content">
+		<h1 style="text-align: center;">Upload Your Image</h1>
+		<div style="width: 30%; margin: 0 auto;">
+			<div class="form-group">
+    			<form method="post" enctype="multipart/form-data" class="form-group">
+    				<label for="inputFile">Choose Image:</label>
+      				<input class="form-control" type="file" name="file" id="inputFile" aria-describedby="input_Help" required>
+      				<small class="form-text text-muted" id="input_Help" >Choose image which is clear and contains face</small>
+      				<img id="myImg" class="img-thumbnail" alt="your image" style="display:none;">
+      				<br>
+      			<button class="btn btn-success btn-block">Detect Emotion</button>
+    			</form>	
+    		</div>
+	    </form>
+    	</div>
+	</div> 
+</div>   
+<script>
+window.addEventListener('load', function() {
+  document.querySelector('input[type="file"]').addEventListener('change', function() {
+      if (this.files && this.files[0]) {
+          var img = document.querySelector('img');  // $('img')[0]
+          img.src = URL.createObjectURL(this.files[0]); // set src to file url
+          img.onload = imageIsLoaded; // optional onload event listener
+          img.style.display = "block";
+      }
+  });
+});
+
+function imageIsLoaded(e) { console.log(e); }
+</script>
+
+    {% endblock %}
+
+
+
+
+
+
+
+    {# <h1 style="text-align: center;">Upload Your Image</h1>
+		<div style="width: 30%; margin: 0 auto;">
+			<div class="form-group">	
+    	<form method="post" enctype="multipart/form-data">
+      <input type="file" name="file" >
+      <input type="submit" value="Upload" class="btn btn-primary">
+ #}

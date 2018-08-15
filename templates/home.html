@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+{% block content %}
+<style>
+}
+.loading{
+    height: 200px;
+    width: 400px;
+    /*background: black;*/
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -200px;
+}
+  
+.loading-page{
+  /*background: black;*/
+  width: 100vw;
+  height: 100vh;
+  }
+    
+    .para{
+      font-size: 40px;
+      font-weight: 100;
+      color: #f60d54; 
+  }
+  
+    .heading{ 
+      color: black;
+      font-size: 60px;
+      margin-top: -10px;
+  }
+    
+    .line{
+      background: #f60d54;
+      border: none;
+      height: 1px;
+  }
+      
+  .counter{
+    width: 200px;
+}
+
+</style>
+	<div id="loading" style="display:none;">
+		<div class="loading-page">
+ 			<div class="counter">
+   				<p class="para">Training</p>
+     				<h1 class="heading"> 0%  </h1>
+   						<hr class="line">
+			</div>
+		</div>
+	</div>	
+  	<div class="container" id="content">
+  		<div class="row">
+        		<div class="col-md-8">
+        			<div class="jumbotron">
+					<h1>Want To Know Your Emotion <i class="far fa-smile-wink"></i></h1>
+					<hr>
+					<p>The best and most beautiful things in the world cannot be seen or even touched </p>
+					<a href="{{url_for('train_predict')}}" ><button class="btn btn-primary btn-block" onclick="loading();">Train</button></a>
+					</div>
+					<div><a href="/upload" aria-describedby="predict"><button class="btn  btn-primary">Upload Image</button></a>
+	<small class="form-text text-muted" id="predict" >You must train for predicting emotion.</small>
+	</div>
+        		</div>
+      	</div>
+	</div>
+
+
+<script type="text/javascript">
+        function loading(){
+            $("#loading").show();
+            $("#content").hide();
+            $('#navbar').hide();
+            // $('body').css('background-color', 'black');
+				  var counter = 0;
+				  var c = 0;
+				  var i = setInterval(function(){
+				      $(".loading-page .counter h1").html(c + "%");
+				      $(".loading-page .counter hr").css("width", c + "%");
+				    counter++;
+				    c++;
+				      
+				    if(counter == 101) {
+				        clearInterval(i);
+				    }
+
+				  }, 550);       
+        }
+</script>
+
+{% endblock %}
+
+

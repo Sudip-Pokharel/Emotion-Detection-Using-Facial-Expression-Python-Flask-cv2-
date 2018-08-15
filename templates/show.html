@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+<title>Predict</title>
+
+
+{% block content %}
+<div class="container">
+      <div>
+      <img src="{{filename}}" class="img-fluid" alt="Uploaded Image">
+      </div>
+      <br>
+      <hr>
+    <div class="row">
+{# {% if images|length == 0 %} #}
+   {#  <h3>Please Upload Another Image Which is Clear And Contains Face</h3>
+    <hr>
+    <a href="/upload"><button class="btn  btn-primary">Upload New Image</button></a> #}
+{# {% endif %} #}
+{# {% if images|length !=0 %} #}          
+    {% for message,image in zip(messages,images) %}
+            <div class="col-sm-6 col-lg-3">
+              <figure class="figure">
+                  <img src="{{ url_for('static', filename='images/' + image) }}" class="figure-img img-thumbnail" alt="{{message}}">
+                  <figcaption class="figure-caption">Emotion is {{message|capitalize}}</figcaption></figure>
+            </div>
+    {% endfor %}     
+{# {% endif %}     #}
+    </div> 
+    <hr>
+  {# {%if message|length !=0 %}   #}
+    <!-- Button trigger modal -->
+              <button type="button" class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#option">
+              Option
+              </button>
+              <!-- Modal -->
+              <div class="modal fade" id="option" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Do You Want To Brighten Up Your Mood?</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <h5>Boost Up Your Mood With</h5>
+                      <p><h5>Music</h5><a href="{{url_for('music')}}" role="button" class="btn btn-secondary">Click Here To Listen Music</a></p>
+                      <hr>
+                      <p><h5>Jokes</h5><a href="{{url_for('jokes')}}" role="button" class="btn btn-secondary">Click Here To Read Jokes and Quotes</a></p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  {# {% endif %}   #}       
+              <br>
+              <br>
+</div>     
+{% endblock %}
